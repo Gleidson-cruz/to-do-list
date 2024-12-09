@@ -23,6 +23,10 @@ h1 {
     color: #fff;
 }
 
+.itemLista {
+    padding-bottom: 2px !important;
+}
+
 input {
     border: none;
     border-radius: 10px 0 0 10px;
