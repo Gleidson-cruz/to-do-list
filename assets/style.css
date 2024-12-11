@@ -11,6 +11,10 @@ body {
     background-color: #0e0f18;
 }
 
+nav {
+    background-color: #0e0f18;
+}
+
 .header-list {
     background-color: #6c63ff;
     border-radius: 10px 10px 0 0;
