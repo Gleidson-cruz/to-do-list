@@ -1,34 +1,62 @@
 /*DOM INICIO */
-
+const light =
+  "<span id='lightMode' class='mode navbar-brand mb-0 h1'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#111827' class='bi bi-lightbulb-fill' viewBox='0 0 16 16'><path d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5'/></svg></span>";
+const dark =
+  "<span id='darkMode' class='mode navbar-brand mb-0 h1'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#fff' class='bi bi-lightbulb-fill' viewBox='0 0 16 16'><path d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5'/></svg></span>";
+const modeselect = document.getElementById("modeSelect");
+let darkOn = true;
+modeselect.innerHTML = dark;
+console.log(darkOn);
 
 document.addEventListener("DOMContentLoaded", function () {
-  let darkOn = true;
-  const light =
-    "<span id='lightMode' class='mode navbar-brand mb-0 h1'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#000' class='bi bi-lightbulb-fill' viewBox='0 0 16 16'><path d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5'/></svg></span>";
-  const dark =
-    "<span id='darkMode' class='mode navbar-brand mb-0 h1'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#fff' class='bi bi-lightbulb-fill' viewBox='0 0 16 16'><path d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5'/></svg></span>";
-  const modeselect = document.getElementById("modeSelect");
-
-  modeselect.innerHTML = dark;
-
-  document.getElementById("darkMode").addEventListener("click", function() {
-    if (darkOn === true) {
-      darkOn = false;
+  modeselect.addEventListener("click", function (event) {
+    if (event.target.closest("#darkMode") && darkOn === true) {
       modeselect.innerHTML = light;
-      console.log(darkOn)
-    } 
+      darkOn = false;
+      console.log("modo escuro desligado");
 
-    document.getElementById("lightMode").addEventListener("click", function() {
-      if (darkOn === false) {
-        darkOn = true;
-        modeselect.innerHTML = dark;
-        console.log(darkOn)
-      }
+      document.body.style.background = "#f0f2f5";
+      document.getElementById("modeSelect").style.background = "#f0f2f5";
+      document.getElementById("headerList").style.background = "#111827";
+      document.getElementById("adicionar-tarefa").style.background = "#3f3d56";
+      document.getElementById("adicionar-tarefa").addEventListener("mouseover", function () {
+        document.getElementById("adicionar-tarefa").style.background = "#1F1E2A";
+      })
+      document.getElementById("adicionar-tarefa").addEventListener("mouseout", function () {
+        document.getElementById("adicionar-tarefa").style.background = "#3f3d56";
+      })
+      document.getElementById("alert").style.color = "#db4c34";
+      document.getElementById("lista-tarefas").style.background = "#878787";
+      document.getElementById("btnEdit").addEventListener("mouseover", function () {
+        document.getElementById("btnEdit").style.background = "#1F1E2A";
+      })
+      document.getElementById("btnEdit").addEventListener("mouseout", function () {
+        document.getElementById("btnEdit").style.background = "#3f3d56";
+      })
+
+    } else if (event.target.closest("#lightMode") && darkOn === false) {
+      modeselect.innerHTML = dark;
+      darkOn = true;
+      console.log("modo escuro ligado");
+
+      
+      document.body.style.background = "";
+      document.getElementById("modeSelect").style.background = "";
+      document.getElementById("headerList").style.background = "";
+      document.getElementById("adicionar-tarefa").style.background = "";
+      document.getElementById("adicionar-tarefa").addEventListener("mouseover", function () {
+        document.getElementById("adicionar-tarefa").style.background = "";
+      })
+      document.getElementById("adicionar-tarefa").addEventListener("mouseout", function () {
+        document.getElementById("adicionar-tarefa").style.background = "";
+      })
+      document.getElementById("alert").style.color = "";
+      document.getElementById("lista-tarefas").style.background = ""
+
+
     }
-    )
-  })
-
-})
+  });
+});
 
 /*DOM FIM */
 
@@ -119,7 +147,6 @@ btnAdcionar.addEventListener("click", function () {
         } else {
           document.getElementById("alert").innerHTML =
             "Por favor, preencha o campo para editar";
-          document.getElementById("alert").style.color = "#edff00";
         }
       });
     });
@@ -159,6 +186,5 @@ btnAdcionar.addEventListener("click", function () {
     });
   } else {
     document.getElementById("alert").innerHTML = "Por favor, preencha o campo";
-    document.getElementById("alert").style.color = "#edff00";
   }
 });

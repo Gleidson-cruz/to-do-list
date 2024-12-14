@@ -28,6 +28,10 @@ h1 {
     color: #fff;
 }
 
+.alert {
+    color: #fbff00;
+}
+
 .itemLista {
     padding-bottom: 2px !important;
 }
